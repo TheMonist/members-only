@@ -1,4 +1,3 @@
-// this is just to test if everything is working
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -11,5 +10,8 @@ app.get("/", (req, res) => res.send("Hello World"));
 
 app.listen(PORT, () => {
     console.log(`Express App on PORT ${PORT}`);
-    console.log(process.env);
 })
+
+// https://github.com/kmthehippie/members_only_sql
+// https://github.com/NewRedRoses/members-only
+// https://github.com/katiegd/members-only

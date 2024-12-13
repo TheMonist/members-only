@@ -1,12 +1,25 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 3000;
+const path = require("node:path");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
 
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");      
 
-app.get("/", (req, res) => res.send("Hello World"));
+app.use(express.urlencoded({ extended: false }));
+app.use(passport.session());
+
+// Session Config
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+}))
+
+// Set up routes/routers here
 
 app.listen(PORT, () => {
     console.log(`Express App on PORT ${PORT}`);

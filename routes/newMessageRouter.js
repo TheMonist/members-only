@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const newMessageRouter = Router();
-const db = require("../db/queries");
+const db = require("../db/pool");
 
 newMessageRouter.get("/:id", (req, res) => {
     res.redirect("/");

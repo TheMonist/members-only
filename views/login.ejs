@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Log In</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <%- include("partials/header") %>
+            <div class="main-content">
+                <h1>Message Board</h1>
+                <form action="/login" method="post" class="sign-up-form">
+                    <label for="email">Email</label>
+                    <input type="email" name="username" id="username" required />
+                    <label for="email">Password</label>
+                    <input type="password" name="password" id="password" required />
+                    <button type="submit" class="sign-up-form">Log In</button>
+                </form>
+            </div>
+            <%- include("partials/footer") %>
+        </div>
+    </body>
+</html>

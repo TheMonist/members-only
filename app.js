@@ -48,7 +48,3 @@ app.get("/logout", (req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Express App on PORT ${PORT}`);
 })
-
-// https://github.com/kmthehippie/members_only_sql
-// https://github.com/NewRedRoses/members-only
-// https://github.com/katiegd/members-only

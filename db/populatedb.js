@@ -47,7 +47,10 @@ const createDemoMessages = `INSERT INTO messages (user_id, title, message, times
 async function main() {
     console.log("seeding");
     const client = new Client({
-        connectionString: process.env.DB_URL
+        connectionString: process.env.DB_URL,
+        ssl: {
+            rejectUnauthorized: false,
+        },
     });
 
     try {

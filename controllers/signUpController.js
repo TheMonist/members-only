@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator");
-const db = require("../db/queries"); // check if this is the correct sql file to work with
+const db = require("../db/pool"); // check if this is the correct sql file to work with
 const bcrypt = require("bcryptjs");
 
 const validateSignUp = [

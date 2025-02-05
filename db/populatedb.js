@@ -1,10 +1,10 @@
 const { Client } = require("pg");
 require("dotenv").config();
 
-const dropTable = `DROP TABLE IF EXISTS table members, messages, session`;  
+const dropTable = `DROP TABLE IF EXISTS members, messages, session`;  
 
-const createMemberTable = `CREATE TABLE IF NOT EXISTS members (
-    user_id INTEGER PRIMARY KEY GENERATED AS ALWAYS AS IDENTITY,
+const createMemberTable = `CREATE TABLE members (
+    user_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     firstname VARCHAR(255) NULL,
     lastname VARCHAR(255) NULL,
     username password VARCHAR(255) NULL UNIQUE,
@@ -14,8 +14,8 @@ const createMemberTable = `CREATE TABLE IF NOT EXISTS members (
     CONSTRAINT members_pkey PRIMARY KEY (id));
 `;
 
-const createMessageTable = `CREATE TABLE IF NOT EXISTS messages (
-    message_id INTEGER PRIMARY KEY GENERATED AS ALWAYS AS IDENTITY,
+const createMessageTable = `CREATE TABLE messages (
+    message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     user_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
     message TEXT NOT NULL,
@@ -23,7 +23,7 @@ const createMessageTable = `CREATE TABLE IF NOT EXISTS messages (
     CONSTRAINT messages_pkey PRIMARY KEY (id));
 `;
 
-const createSession = `CREATE TABLE IF NOT EXISTS session (
+const createSession = `CREATE TABLE session (
     sid VARCHAR NOT NULL COLLATE "default",
     sess JSON NOT NULL,
     expire TIMESTAMP(6) NOT NULL,
@@ -48,9 +48,7 @@ async function main() {
     console.log("seeding");
     const client = new Client({
         connectionString: process.env.CONNECTION_STRING,
-        ssl: {
-            rejectUnauthorized: false,
-        },
+        // ssl: { rejectUnauthorized: false }
     });
 
     try {
